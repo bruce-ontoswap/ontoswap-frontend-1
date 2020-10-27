@@ -20,7 +20,7 @@
         <Space height="15"/>
         <p :class="$['card-title']">{{rewardsLp}}</p>
         <Space height="4"/>
-        <p :class="$['card-sub-title']">YFO {{$t('60')}}</p>
+        <p :class="$['card-sub-title']">VNLA {{$t('60')}}</p>
         <Space height="22"/>
         <el-button
           @click="harvest"

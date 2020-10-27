@@ -1,4 +1,4 @@
-# ontoswap
+# Chocoswap
 
 ## Project setup
 ```

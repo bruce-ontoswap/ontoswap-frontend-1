@@ -7,7 +7,7 @@
   <div :class="$style['sub-card']">
     <p :class="$style['sub-title']">{{content.subTitle}}</p>
     <p :class="$style['sub-number']">
-      <CountUp :endVal="content.subNumber" :lock="content.lock" /> YFO</p>
+      <CountUp :endVal="content.subNumber" :lock="content.lock" /> VNLA</p>
   </div>
 </div>
 </template>

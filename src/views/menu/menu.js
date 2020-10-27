@@ -35,19 +35,19 @@ export default {
     formatItems() {
       const tmp = [
         {
-          type: 'OSWAP-USDT',
-          title: 'OSWAP',
-          subTitle: `${this.$t('30')} OSWAP-USDT LP<br />${this.$t('40')} YFO`,
+          type: 'Choco-USDT',
+          title: 'Choco',
+          subTitle: `${this.$t('30')} Choco-USDT LP<br />${this.$t('40')} VNLA`,
         },
         {
-          type: 'YFO-USDT',
-          title: 'YFO',
-          subTitle: `${this.$t('30')} YFO-USDT LP<br />${this.$t('40')} YFO`,
+          type: 'VNLA-USDT',
+          title: 'VNLA',
+          subTitle: `${this.$t('30')} VNLA-USDT LP<br />${this.$t('40')} VNLA`,
         },
         {
           type: 'DAI-USDT',
           title: 'DAI',
-          subTitle: `${this.$t('30')} DAI-USDT LP<br />${this.$t('40')} YFO`,
+          subTitle: `${this.$t('30')} DAI-USDT LP<br />${this.$t('40')} VNLA`,
         }
       ];
 

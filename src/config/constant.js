@@ -4,15 +4,15 @@ export const MAX_NUMBER = '11579208923731619542357098500868790785326998466564056
 export const CONTRACT_PROVIDER = 'wss://ropsten.infura.io/ws/v3/3f27afaede7c48d6bec4fd2fb4534ee2'
 
 export const pairs = {
-  'OSWAP-USDT': {
+  'Choco-USDT': {
     id: 0,
     hash: "0xE280d9e0a21d47A6c30608F57eC36ACAecfc3f4F",
-    approveText: "OSWAP-USDT",
+    approveText: "Choco-USDT",
   },
-  'YFO-USDT': {
+  'VNLA-USDT': {
     id: 1,
     hash: "0x5eFb0da6f74BFDf72251504d9737ac27D286c6cF",
-    approveText: "YFO-USDT",
+    approveText: "VNLA-USDT",
   },
   'DAI-USDT': {
     id: 2,
