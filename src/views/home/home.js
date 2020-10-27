@@ -29,13 +29,6 @@ export default {
       visible: true
     }
   },
-  mounted() {
-    this.getSurvey()
-    this.formatContent()
-    if (this.$store.state.wallet.address) {
-      this.getPresonInfo();
-    }
-  },
   methods: {
     formatContent(){
       this.balanceContent = {
@@ -49,38 +42,26 @@ export default {
         subTitle: this.$t('70'),
       }
     },
-    getSurvey(){
-      getTotalSupply().then(res => {
-        this.totalSupplyContent.number = getBalanceNumber(res)
-      })
-      getRewardPerBlock().then(res => {
-        this.totalSupplyContent.subNumber = getBalanceNumber(res)
-      })
-    },
-    getPresonInfo(){
-      // getAvailableBalance().then(res => {
-      //   this.balanceContent.number = getBalanceNumber(res)
-      // })
-      // let rewards = []
-      // for(let item in pairs){
-      //   rewards.push(getRewardLP(pairs[item].id))
-      // }
-      // Promise.all(rewards).then(res => {
-      //   const pedingReward = res.reduce((pre, next) => {
-      //     return pre + Number(next) 
-      //   }, 0)
-      //   this.balanceContent.subNumber = getBalanceNumber(pedingReward)
-      // })
-      getHomepageBalance(4, (res) => {
-        this.balanceContent.number = getBalanceNumber(res.splice(0,1)[0])
-        const pedingReward = res.reduce((pre, next) => {
-          return pre + Number(next) 
-        }, 0)
-        this.balanceContent.subNumber = getBalanceNumber(pedingReward)
-      })
-    },
     handleClose(){
       this.visible = false
+    },
+    requests() {
+      homeRequestsInBatch([
+        (err, result) => {
+          this.totalSupplyContent.number = getBalanceNumber(result)
+        },
+        (err, result) => {
+          this.totalSupplyContent.subNumber = getBalanceNumber(result)
+        },
+        (res) => {
+          console.log(res.splice(0,1)[0]);
+          this.balanceContent.number = getBalanceNumber(res.splice(0,1)[0])
+          const pedingReward = res.reduce((pre, next) => {
+            return pre + Number(next) 
+          }, 0)
+          this.balanceContent.subNumber = getBalanceNumber(pedingReward)
+        },
+      ])
     }
   },
   watch: {
@@ -94,25 +75,7 @@ export default {
     },
   },
   mounted() {
+    this.formatContent()
     this.requests()
-  },
-  methods: {
-    requests() {
-      homeRequestsInBatch([
-        (err, result) => {
-          this.totalSupplyContent.number = getBalanceNumber(result)
-        },
-        (err, result) => {
-          this.totalSupplyContent.subNumber = getBalanceNumber(result)
-        },
-        (res) => {
-          this.balanceContent.number = getBalanceNumber(res.splice(0,1)[0])
-          const pedingReward = res.reduce((pre, next) => {
-            return pre + Number(next) 
-          }, 0)
-          this.balanceContent.subNumber = getBalanceNumber(pedingReward)
-        },
-      ])
-    }
   },
 }
