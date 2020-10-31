@@ -2,13 +2,13 @@
 	{
 		"inputs": [
 			{
-				"internalType": "contract YFOToken",
-				"name": "_yfo",
+				"internalType": "contract VNLAToken",
+				"name": "_vnla",
 				"type": "address"
 			},
 			{
 				"internalType": "uint256",
-				"name": "_yfoPerBlock",
+				"name": "_vnlaPerBlock",
 				"type": "uint256"
 			},
 			{
@@ -289,7 +289,7 @@
 				"type": "address"
 			}
 		],
-		"name": "pendingYfo",
+		"name": "pendingVnla",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -327,7 +327,7 @@
 			},
 			{
 				"internalType": "uint256",
-				"name": "accYfoPerShare",
+				"name": "accVPerShare",
 				"type": "uint256"
 			}
 		],
@@ -462,6 +462,32 @@
 		"type": "function"
 	},
 	{
+		"inputs": [],
+		"name": "vnla",
+		"outputs": [
+			{
+				"internalType": "contract VNLAToken",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "vnlaPerBlock",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "uint256",
@@ -477,32 +503,6 @@
 		"name": "withdraw",
 		"outputs": [],
 		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "yfo",
-		"outputs": [
-			{
-				"internalType": "contract YFOToken",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "yfoPerBlock",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
 		"type": "function"
 	}
 ]

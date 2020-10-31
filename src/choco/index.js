@@ -1,9 +1,9 @@
 import Web3 from 'web3'
 import store from '../store/index'
 import detectEthereumProvider from '@metamask/detect-provider'
-import { CONTRACT_PROVIDER, YFO_HASH, YFODIST_HASH, MAX_NUMBER, pairs } from '../config/constant'
-import abi from './yfo.json'
-import yfodistABI from './yfodist.json'
+import { CONTRACT_PROVIDER, VNLA_HASH, VNLADIST_HASH, MAX_NUMBER, pairs } from '../config/constant'
+import abi from './vnla.json'
+import yfodistABI from './vnladist.json'
 import BigNumber from 'bignumber.js'
 
 export const init = async () => {
@@ -71,7 +71,7 @@ export const putApprove = async (pid, callback) => {
     var web3 = new Web3(window.ethereum);
     const assetContract = new web3.eth.Contract(abi, pid)
     await assetContract.methods
-      .approve(YFODIST_HASH, MAX_NUMBER)
+      .approve(VNLADIST_HASH, MAX_NUMBER)
       .send({
         from: store.state.wallet.address
       }, callback)
@@ -97,7 +97,7 @@ export const getAvaliableLP = async (pid) => {
 export const getStakedLP = async (pid) => {
   const contract = getContract({
     provider: CONTRACT_PROVIDER,
-    contractHash: YFODIST_HASH,
+    contractHash: VNLADIST_HASH,
     abi: yfodistABI,
   })
 
@@ -111,12 +111,12 @@ export const getStakedLP = async (pid) => {
 export const getRewardLP = async (hash) => {
   const contract = getContract({
     provider: CONTRACT_PROVIDER,
-    contractHash: YFODIST_HASH,
+    contractHash: VNLADIST_HASH,
     abi: yfodistABI,
   })
 
   try {
-    return await contract.methods.pendingYfo(hash, store.state.wallet.address).call()
+    return await contract.methods.pendingVnla(hash, store.state.wallet.address).call()
   } catch (e) {
     return '0'
   }
@@ -141,7 +141,7 @@ export const putDeposit = async (pid, amount, callback) => {
     const x = new BigNumber(10).pow(18)
     const _amount = x.multipliedBy(amount).toString()
     var web3 = new Web3(window.ethereum);
-    const assetContract = new web3.eth.Contract(yfodistABI, YFODIST_HASH)
+    const assetContract = new web3.eth.Contract(yfodistABI, VNLADIST_HASH)
     await assetContract.methods
       .deposit(pid, _amount)
       .send({
@@ -157,7 +157,7 @@ export const putWithdrawAll = async (pid, amount, callback) => {
     const x = new BigNumber(10).pow(18)
     const _amount = x.multipliedBy(amount).toString()
     var web3 = new Web3(window.ethereum);
-    const assetContract = new web3.eth.Contract(yfodistABI, YFODIST_HASH)
+    const assetContract = new web3.eth.Contract(yfodistABI, VNLADIST_HASH)
     await assetContract.methods
       .withdraw(pid, _amount)
       .send({
@@ -171,7 +171,7 @@ export const putWithdrawAll = async (pid, amount, callback) => {
 export const getTotalSupply = async () => {
   const contract = getContract({
     provider: CONTRACT_PROVIDER,
-    contractHash: YFO_HASH,
+    contractHash: VNLA_HASH,
     abi,
   })
 
@@ -185,7 +185,7 @@ export const getTotalSupply = async () => {
 export const getRewardPerBlock = async () => {
   const contract = getContract({
     provider: CONTRACT_PROVIDER,
-    contractHash: YFODIST_HASH,
+    contractHash: VNLADIST_HASH,
     abi: yfodistABI,
   })
 
@@ -199,7 +199,7 @@ export const getRewardPerBlock = async () => {
 export const getAvailableBalance = async () => {
   const contract = getContract({
     provider: CONTRACT_PROVIDER,
-    contractHash: YFO_HASH,
+    contractHash: VNLA_HASH,
     abi,
   })
 
